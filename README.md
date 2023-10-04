@@ -49,11 +49,11 @@ You can try the live demo of the Password Generator app here: [Live Demo](https:
 
 This project is integrated with GitHub Actions for automated CI/CD. Every time you push changes to the main branch, GitHub Actions will:
 
-Build and test the application.
-Deploy the application to the production environment.
+- Build and test the application.
+- Deploy the application to the production environment(vercel).
 
 ## Usage
-Click the "Generate Password" button to create a random password.
-Adjust the length and complexity settings to customize the generated password.
-You also have options for including numbers and characters 
-Click the "Copy to Clipboard" button to copy the generated password to your clipboard.
+- Click the "Generate Password" button to create a random password.
+- Adjust the length and complexity settings to customize the generated password.
+- You also have options for including numbers and characters 
+- Click the "Copy to Clipboard" button to copy the generated password to your clipboard.
