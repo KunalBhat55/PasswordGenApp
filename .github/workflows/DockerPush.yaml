@@ -6,7 +6,7 @@ on:
       - main  # Modify this to your main branch name
 
 jobs:
-  build:
+  login:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,19 +22,22 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-  Push:
+  build-Push:
     runs-on: ubuntu-latest
-    needs: build
+    needs: login
 
     steps:
+
+      - name: List Files in Repository
+        run: ls  
+        
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
           file: ./Dockerfile 
-          context: .
           push: true
           tags: kunalbhat55/cicd:passgenappv1
-          
-      - name: List Files in Repository
-        run: ls
+
+
+
  
