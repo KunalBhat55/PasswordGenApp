@@ -1,0 +1,10 @@
+name: swdkwd
+on: 
+    push:
+        branches:
+          - main
+
+jobs:
+    build:
+        name: sss
+        
