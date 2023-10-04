@@ -30,6 +30,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
+          file: ./Dockerfile 
           context: .
           push: true
           tags: kunalbhat55/cicd:passgenappv1
