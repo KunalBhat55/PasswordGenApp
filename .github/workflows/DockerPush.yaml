@@ -40,7 +40,7 @@ jobs:
     
       - name: Build and push Docker image
         run: |
-          docker build -t kunalbhat55/cicd:passgenappv1 .
+          docker build -t kunalbhat55/cicd:passgenappv1 ./
           docker push kunalbhat55/cicd:passgenappv1
 
 
