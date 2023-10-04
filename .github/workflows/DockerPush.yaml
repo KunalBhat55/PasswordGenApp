@@ -6,7 +6,7 @@ on:
       - main  # Modify this to your main branch name
 
 jobs:
-  login:
+  login-push:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,14 +22,14 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-  build-Push:
-    runs-on: ubuntu-latest
-    needs: login
+#   build-Push:
+#     runs-on: ubuntu-latest
+#     needs: login
 
-    steps:
+#     steps:
 
-      - name: List Files in Repository
-        run: ls -R 
+#       - name: List Files in Repository
+#         run: ls -R 
 
     #   - name: Build and push Docker image
     #     uses: docker/build-push-action@v4
