@@ -1,4 +1,4 @@
-# Password Generator
+# Password Generator with CICD 
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/yourusername/password-generator/CI-CD?label=CI%2FCD)
 
