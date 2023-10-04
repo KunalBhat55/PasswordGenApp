@@ -31,12 +31,17 @@ jobs:
       - name: List Files in Repository
         run: ls -R 
 
+    #   - name: Build and push Docker image
+    #     uses: docker/build-push-action@v4
+    #     with:
+    #       file: ./Dockerfile 
+    #       push: true
+    #       tags: kunalbhat55/cicd:passgenappv1
+    
       - name: Build and push Docker image
-        uses: docker/build-push-action@v4
-        with:
-          file: ./Dockerfile 
-          push: true
-          tags: kunalbhat55/cicd:passgenappv1
+        run: |
+          docker build -t kunalbhat55/cicd:passgenappv1 .
+          docker push kunalbhat55/cicd:passgenappv1
 
 
 
