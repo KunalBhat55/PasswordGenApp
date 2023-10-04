@@ -35,4 +35,5 @@ jobs:
     #       push: true
     #       tags: kunalbhat55/cicd:passgenappv1
         - name: List Files in Repository
+          context: .
           run: ls
