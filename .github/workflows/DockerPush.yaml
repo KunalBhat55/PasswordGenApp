@@ -31,5 +31,5 @@ jobs:
       with:
         context: .  # Use the current directory as the build context
         push: true
-        tags: kunalbhat55/passgenapp:v1
+        tags: kunalbhat55/cicd:passgenappv1
   
