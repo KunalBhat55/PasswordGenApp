@@ -27,13 +27,14 @@ jobs:
     needs: build
 
     steps:
-    #   - name: Build and push Docker image
-    #     uses: docker/build-push-action@v4
-    #     with:
-    #       file: ./Dockerfile 
-    #       context: .
-    #       push: true
-    #       tags: kunalbhat55/cicd:passgenappv1
-        - name: List Files in Repository
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          file: ./Dockerfile 
           context: .
-          run: ls
+          push: true
+          tags: kunalbhat55/cicd:passgenappv1
+          
+      - name: List Files in Repository
+        run: ls
+ 
