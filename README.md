@@ -1,4 +1,4 @@
-# Password Generator
+# Password Generator with CICD 
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/yourusername/password-generator/CI-CD?label=CI%2FCD)
 
@@ -20,6 +20,7 @@ This is a simple Password Generator application built with React and integrated 
 - Customize password length and complexity.
 - Copy generated passwords to your clipboard.
 - Built with React for a responsive and interactive user interface.
+- Containerized the application using Docker and Build & Pushed to Docker hub using CI/CD
 
 ## Demo
 
