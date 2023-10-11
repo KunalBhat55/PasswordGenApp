@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "./index.css";
+
 
 
 export const PasswordApp = () => {
@@ -7,6 +8,9 @@ export const PasswordApp = () => {
   const [number, setNumber] = useState(false);
   const [char, setChar] = useState(false);
   const [password, setPassword] = useState("");
+  const [strength, setStrength] = useState(0);
+
+  const passwordRef = useRef(null)
 
   const PasswordGenerator = useCallback(() => {
     // memoized
@@ -26,30 +30,49 @@ export const PasswordApp = () => {
       pass = pass + char;
     }
 
+    if(pass.length > 22 && number && char){
+      setStrength(99) ;return
+    }
+    if(pass.length > 8 && pass.length < 16){ // Can add num & char conditons
+      setStrength(50);
+    }
+    else if(pass.length >= 16){
+      setStrength(88)
+    }else{
+      setStrength(20)
+    }
+
     setPassword(pass);
   }, [length, number, char, setPassword]);
+
+  const copyToClipboard = useCallback(() => {
+     passwordRef.current.select()
+     window.navigator.clipboard.writeText(password)
+     
+  },[password]);
 
   useEffect(() => {
     // can only be made by this also
     PasswordGenerator();
-  }, [length, number, char, setPassword]);
+  }, [length, number, char, setPassword]);  
 
   return (
-    <div className="container1 p-5 h-screen flex flex-col justify-center items-center bg-slate-700 font- ">
+    <div className="container1 p-5 h-screen flex flex-col justify-center items-center bg-slate-700">
       <h1 className="text-4xl text-gray-200">Password Generator</h1>
       <div className="innerDiv overflow-hidden w-3/6 p-5 flex justify-center rounded-lg">
         <input
           type="text"
-          className="py-2 px-3 w-full rounded-lg text-black font-semibold"
+          className="input input-bordered w-full max-w-md text-white font-semibold"
           placeholder="Password"
           value={password}
           readOnly
+          ref={passwordRef}
         />
-        <button className="p-3 mx-2 rounded-lg bg-stone-600 text-gray-200">
+        <button onClick={copyToClipboard}  className="btn p-3 mx-2 rounded-lg bg-stone-600 text-gray-200">
           Copy
         </button>
       </div>
-      <div className="w-3/6 ml-10">
+      <div className="w-3/6 flex gap-3 justify-center">
         {/* Range */}
         <input
           onChange={(e) => {
@@ -58,14 +81,14 @@ export const PasswordApp = () => {
           }}
           type="range"
           min={8}
-          max={30}
+          max={25}
           value={length}
-          className="cursor-pointer mx-2"
+          className="range-lg cursor-pointer"
         />
-        <label className="text-xl my-2 text-gray-200">Length: {length}</label>
+        <label className="text-xl  text-gray-200">Length: {length}</label>
         {/* numberInput */}
         <input
-          className="ml-4 cursor-pointer zoom w-5 h-5"
+          className="checkbox"
           type="checkbox"
           id="numberInput"
           defaultChecked={number}
@@ -77,10 +100,10 @@ export const PasswordApp = () => {
             );
           }}
         />
-        <label className="text-xl ml-2 my-2 text-gray-200">Numbers</label>
+        <label className="text-xl text-gray-200">Numbers</label>
         {/* characterInput */}
         <input
-          className="ml-4 cursor-pointer zoom w-5 h-5"
+          className="checkbox"
           type="checkbox"
           id="characterInput"
           defaultChecked={char}
@@ -88,7 +111,15 @@ export const PasswordApp = () => {
             setChar((prev) => !prev); // true then false then true
           }}
         />
-        <label className="text-xl ml-2 text-gray-200">Characters</label>
+        <label className="text-xl  text-gray-200">Characters</label>
+      </div>
+      <label className="mt-8 text-xl text-white">Strength</label>
+      <div
+        type="range"
+        className="radial-progress transition-all mt-4 text-xl font-semibold"
+        style={{ "--value": `${ strength }`, "--thickness": "3px" }}
+      >
+        {strength}%
       </div>
     </div>
   );
