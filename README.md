@@ -11,8 +11,7 @@ This is a simple Password Generator application built with React and integrated 
 - [Installation](#installation)
 - [CI/CD with GitHub Actions](#cicd-with-github-actions)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Features
 
