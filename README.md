@@ -11,8 +11,7 @@ This is a simple Password Generator application built with React and integrated 
 - [Installation](#installation)
 - [CI/CD with GitHub Actions](#cicd-with-github-actions)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Features
 
@@ -31,7 +30,7 @@ You can try the live demo of the Password Generator app here: [Live Demo](https:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/password-generator.git
+   git clone https://github.com/KunalBhat55/PasswordGenApp-with-CICD.git
 
 2. Navigate to the project directory:
    
